@@ -42,3 +42,13 @@ def check_keyup_events(event, ship):
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
+
+def update_bullets(bullets):
+    """Update posiiton of bullets and get rid of old bullets."""
+    # Update bullet positions.
+    bullets.update()
+
+    # Get rid of the bullets that have disappeared.
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
